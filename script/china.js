@@ -8,19 +8,89 @@ $(document).ready(function (){
     /*
      * 配置Raphael生成svg的属性
      */
-    var R = Raphael("ChinaMap", 560, 470); //大小与矢量图形文件图形对应；这是比较操蛋的地方高宽不自适应。
+    var R = Raphael("ChinaMap", 560, 500); //大小与矢量图形文件图形对应；这是比较操蛋的地方高宽不自适应。
     var attr = {
-        "fill" : "#f5f5f5",
-        "stroke" : "#ccc",
-        "stroke-width" : 1,
-        "stroke-linejoin" : "round"
+      "fill" : "#f5f5f5",
+      "stroke" : "#ccc",
+      "stroke-width" : 1,
+      "stroke-linejoin" : "round"
     };
+
+    var attrTest = {
+      "fill" : "#000",
+      "stroke" : "#ccc",
+      "stroke-width" : 1,
+      "stroke-linejoin" : "round"
+    };
+
+    var setColor = function(china) {
+      n01='#85c014';
+      n02='#00a0de';
+      n03='#3471b0';
+      n04='#0896c1';
+      n05='#85bbd6';
+      n06='#72c4ba';
+      n07='#0089d1';
+      n08='#3f557d';
+      n09='#076c93';
+      n10='#b5d5e5';
+      n11='#0070a8';      
+
+      china['xinjiang']['path'].color = n01;
+      china['xizang']['path'].color = n01;
+      china['neimenggu']['path'].color = n01;
+      china['henan']['path'].color = n01;
+      china['jiangxi']['path'].color = n01;
+      china['guangxi']['path'].color = n01;
+
+      china['jilin']['path'].color = n02;
+      china['ningxia']['path'].color = n02;
+      china['hubei']['path'].color = n02;
+      china['yunnan']['path'].color = n02;
+      china['hainan']['path'].color = n02;
+
+      china['hebei']['path'].color = n03;
+
+      china['shanxi']['path'].color = n04;
+      china['sichuan']['path'].color = n04;
+      china['zhejiang']['path'].color = n04;
+      china['aomen']['path'].color = n04;
+
+      china['qinghai']['path'].color = n05;
+
+      china['heilongjiang']['path'].color = n06;
+      china['hongkong']['path'].color = n06;
+      china['shanghai']['path'].color = n06;
+      china['gansu']['path'].color = n06;
+      china['taiwan']['path'].color = n06;
+      china['jiangsu']['path'].color = n06;
+      china['tianjin']['path'].color = n06;
+
+      china['liaoning']['path'].color = n07;
+      china['shaanxi']['path'].color = n07;
+      china['guizhou']['path'].color = n07;
+
+      china['shandong']['path'].color = n08;
+      china['guangdong']['path'].color = n08;
+
+      china['anhui']['path'].color = n09;
+      china['chongqing']['path'].color = n09;
+
+      china['xizang']['path'].color = n10;
+
+      china['hunan']['path'].color = n11;
+      china['fujian']['path'].color = n11;
+      china['beijing']['path'].color = n11;
+
+      return china;
+    };
+
     var china = {};
     china.aomen =
     {
         name : "澳门特区",
         path : R.path("M413.032,414.183l-0.96,1.752c0,0,0.889,0.883,1.98,1.086s1.995-0.493,1.995-0.493L413.032,414.183z").attr(attr)
-    }
+    };
     china.hongkong =
     {
         name : "香港特区",
@@ -28,7 +98,7 @@ $(document).ready(function (){
     };
     china.taiwan =
     {
-        name : "taiwan",
+        name : "台湾",
         path : R.path("M505.438,371.203l-3.217,19.169l-1.664,6.07v5.123l-1.43,1.427l-3.451-5.119l-3.693-2.858l-3.215-8.571c0,0-0.451-5.62,0.357-7.74c0.809-2.118,5.356-14.05,5.356-14.05l6.313-5.357l4.051,1.904L505.438,371.203z").attr(attr)
     };
     china.guangdong =
@@ -117,7 +187,7 @@ $(document).ready(function (){
         path :
         R.path("M153.889,69.508l2.327-0.014l-1.428,4.525l2.025,2.38l0.236,1.666l4.525,4.524l1.191,3.453l5.953,0.357l2.62,2.265h1.429l3.453,7.379l3.451,8.931l-1.784,5.357l0.358,2.025l-3.215,5.477l0.833,4.286l11.192,4.763l12.025,1.788l12.503,8.571l4.049,1.429l0.237,2.261l2.619,5.478l2.619,7.146l3.333,5.953l-1.903,2.263v4.047l-4.286,2.026l-10.596,4.284l-6.907,5.719l-4.881,2.26l-0.834,3.453l1.43,16.55l-3.931-0.596l-1.783,1.431l-26.315,5.119l-3.691,2.856l0.358,6.906l7.978,6.548l-2.62,4.286l-3.69,1.668l-0.597,2.024l0.835,2.259h2.021l1.192,1.429l-7.738,2.617l-4.525-1.667l-2.382-1.424h-5.715l-10.24-4.642h-6.546l-5.121,1.428h-5.714l-8.931,4.879l-7.143-0.834l-7.145,2.5l-5.956-1.907l-3.689-3.211l-9.525-1.427l-6.191,4.28l-3.452-1.425l-2.858-2.263l-6.907-1.667l-1.07-1.189l-2.857-0.237l-9.782,5.945l-10.037-1.25l-0.822-0.359l1.113-8.623l-4.524-1.191l-9.406-6.902l-2.62-0.241l-2.023-4.525l1.427-4.643l-0.477-2.26l-3.451-2.266l-1.192-2.26l-7.143-4.049v-1.189l3.452-1.431l2.023,1.19l2.025-2.025l-0.598-6.785l0.598-5.716l-4.646-4.642l-3.095,0.833l-1.189-3.336l1.785-3.452l-0.952-3.214l3.038-2.749l1.248-1.182v-2.618l4.285-2.024l4.286-0.833l3.811-1.429l3.099,0.832l2.26-0.832l0.833,0.595l0.356,2.859l2.022,0.832l4.765-0.238c0,0,3.566-4.729,5.478-6.073c1.911-1.346,11.19,2.381,11.19,2.381l5.717-4.048l16.552-3.689l1.069-2.264l1.43-6.31l4.643-3.69h1.433v-1.906l0.236-15.836l0.833-3.212l-4.521-1.668l-0.24-1.191l4.762-1.428l12.384-1.073l1.905,2.501l4.287,0.952l1.192,0.239l1.665-2.262l-2.265-2.263l9.169-18.574l1.431-0.953l8.335,4.047h3.689l1.667,2.264l7.979-2.502l2.023-13.212l3.452-2.265l4.048-0.238l2.859-3.452l1.071-3.454l2.263-1.191L153.889,69.508z").attr(attr)
     };
-    china.shanxi =
+    china.shaanxi =
     {
         name : "陕西省",
         path : R.path("M363.393,259.519l-1.428-3.454l2.498-8.81l-3.689-16.903c0,0,3.262-5.777,2.619-4.286c-0.646,1.49,1.07-3.929,1.07-3.929l-3.334-6.905l3.096-4.884l0.594-4.525l1.67-3.452l-0.238-4.046l-1.432-1.074l-2.26,2.502l-6.072,0.356l-3.096,4.526l0.236,2.62l-0.593,1.665l-2.502,0.834l-9.406,13.454l-1.19-0.836l-2.617-0.594l-5.359,0.359l-1.789,2.499l-0.233,5.478l0.834,1.667l9.166,4.637l4.883,3.099l0.832,2.855l-2.619,3.691l1.431,4.286l-0.835,2.021l-6.784,0.6l-1.433,0.835l0.478,1.188v1.904l-5.355,0.596l-2.856-1.428h-3.691l-0.596,0.832l0.596,2.026l-1.789,2.022l-0.592,2.261l3.451,2.861l-2.5,5.117l1.071,2.619l-0.237,1.191h-4.052l-2.854,1.429l2.262,3.098l-1.43,4.048l2.383,0.478l0.238,2.617l2.021,0.237l7.386-1.427l1.43,0.593l0.354,2.025l3.099,0.835l6.547,3.216l3.69-1.434l8.097,2.857l1.666,2.26l4.051-0.829l-0.596-4.288l-0.834-1.191l0.834-3.451l4.286-2.021l1.068-1.668l-2.26-0.837l-2.5-0.593l-2.619-2.62l1.189-1.068h8.571h1.908l1.189,0.83l2.616-2.022v-3.454l-7.737-11.668L363.393,259.519L363.393,259.519z").attr(attr)
@@ -127,7 +197,7 @@ $(document).ready(function (){
         name : "河南省",
         path : R.path("M371.131,276.068l9.405,8.336l7.742,1.665l7.144-1.072l2.262,1.072l2.5-1.43l1.783,1.787l0.834,2.856l3.455,1.905h4.524l3.451,2.857l3.098-1.428l2.382,1.428l1.903-3.929l2.855-1.43l0.598-3.216l-1.07-5.715l-0.596-0.479l-2.856,2.86l-4.287-3.453l-3.218-4.049l3.218-2.263l0.834-4.048l2.021-1.431l-0.354-5.359l1.43-1.188l2.619,1.787l1.664,2.26l3.455-2.26l1.19-1.434l-0.598-2.617l-4.049-2.263l-0.834-2.619l-7.142,0.835l-4.524-3.93l-2.021-0.596v-2.621l10-11.074l-3.69,0.834l-2.261,1.669l-0.957-1.429v-1.666l-1.663-0.6l-4.525,1.785l-11.43-1.428l-0.597,9.408c0,0-6.604,5.169-5.479,4.287c1.129-0.884-7.381,1.429-7.381,1.429l-10.359,7.142l-8.215,2.264v1.43l7.738,11.666L371.131,276.068L371.131,276.068z").attr(attr)
     };
-    china.shanxi1 =
+    china.shanxi =
     {
         name : "山西省",
         path : R.path("M363.393,259.519l8.217-2.265l10.357-7.142l7.381-1.431l5.477-4.287l0.599-9.405l-2.623-3.449l0.836-2.856l1.787-2.619l0.477-3.929l1.785-2.86l-2.859-5.713l-4.047-4.645l2.262-7.383l4.886-3.212l0.83-4.765l-1.904-4.286v-5.242l-3.215-2.854l-7.381,3.809l-1.191-1.189l-3.93,2.855l-3.213-0.235l-6.312,9.048h-1.906l-3.452,2.858l0.237,4.046l-1.67,3.452l-0.594,4.525l-3.096,4.884l3.334,6.905l-1.07,3.929l-2.619,4.286c0,0,4.146,18.996,3.689,16.903s-2.498,8.81-2.498,8.81L363.393,259.519z").attr(attr)
@@ -201,7 +271,7 @@ $(document).ready(function (){
     var circle;
 
     for (var state in china){
-    	// china[state].
+
     	bbox = china[state].path.getBBox();
     	// console.log('state:', china[state].path.getBBox());
     	circle = china[state].path.paper.circle(bbox.x+bbox.width/2, bbox.y+bbox.height/2, 20);
@@ -211,12 +281,20 @@ $(document).ready(function (){
 
     	console.log( 'state:', state );
 
-    	china[state]['path'].color = Raphael.getColor(0.9);
+    	china[state]['path'].color = Raphael.getColor(0.9);//set fill color here
+      china = setColor(china);
 
     	(function (st, state) {
     		$(st[0]).css('cursor','pointer'); 
 	    	//write tip 
 	    	$(st[0]).hover(function(e){
+          console.log('state', state);
+          //recover previous element hovered on
+          current && china[current]['path'].animate({fill: "#f5f5f5", stroke: "#ddd"}, 500);
+
+          //highlight current one
+          st.animate({fill: st.color, stroke: "#eee"}, 500);
+
 	    		var _ST = this;
 	    		if(e.type == 'mouseenter'){
 	    			tiplayer.text(china[state]['name']).css({
@@ -229,13 +307,14 @@ $(document).ready(function (){
 	    				tiplayer.stop(); 
 	    				tiplayer.hide(); 
 	    		}
-	    	});
+	    	}, function(e){
+          current = state;
+        });
 
 	    	$(st[0]).click(function(e){
 	    		//mark Province
-	    		current && china[current]['path'].animate({fill: "#f5f5f5", stroke: "#ddd"}, 500);
-
-	    		st.animate({fill: st.color, stroke: "#eee"}, 500);
+/*	    		current && china[current]['path'].animate({fill: "#f5f5f5", stroke: "#ddd"}, 500);
+	    		st.animate({fill: st.color, stroke: "#eee"}, 500);*/
 
 	    		st.toFront();
 	    		R.safari && R.safari();
