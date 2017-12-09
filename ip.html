@@ -1,0 +1,51 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+
+  <title>ip</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+  var trim = function(text) {
+    var trimLeft = /^\s+/, trimRight = /\s+$/;
+    return text.toString().replace( trimLeft, "" ).replace( trimRight, "" );
+  }
+
+  var replace = function(text){
+    return text && text.replace(/[\.\d\s]/g, '');
+  };
+
+  var isIp = function(ip) {
+    if(!ip || replace(ip).length>0) return false;
+
+    var arr = trim(ip).split('.');
+    if (arr.length > 4) return false;
+
+    var swap = '';
+    var flag = arr.some(function(item){
+      swap = trim(item);
+      return (+swap>255 || 
+        +swap.toString()+''==='NaN'|| 
+          swap.indexOf('0')===0 && +swap!=0
+            );
+    });
+    return !flag;
+  }
+
+  var convertIpv4 = function(ip) {
+    var arr = ip.split('.');
+    var result = 0;
+    var faciend = 256*256*256;
+    arr.map(function(item){
+      result += item*faciend;
+      faciend = faciend/256;
+    });
+    return result;
+  }
+
+
+  </script>
+</body>
+</html>
