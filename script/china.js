@@ -4,6 +4,63 @@
  * buildTime: 2011/03/03
  * http://www.microidc.com
  */
+let renderOperator = function(data = {
+
+        'rename_bubble_metric': 'rename_bubble_metric',
+        'rename_color_metric': 'rename_color_metric',
+
+        'bubble_max': 'bubble-max',       //m1
+        'bubble_min': 'bubble-min',
+
+        'color_max': 'color-max',       //m2
+        'color_min': 'color-min',
+
+        'show_bubbles': 'show_bubbles',
+        'show_colors': 'show_colors'  //show_colors
+    }) {
+
+    let renameBubble = _=>{
+      let template = (_?`<li>
+            <input value="${_}" class="renamed bubble" name="renamed-bubble" disabled />
+        </li>`:``);
+      return template;
+    }
+
+    let renameColor = _=>{
+      let template = (_?`<li>
+            <input value="${_}" class="renamed color" name="renamed-color" disabled />
+        </li>`:``);
+      return template;
+    }
+
+    let showBubble = _=>{
+      let template = (_?`<li class="bubble-max"> < ${data['bubble_max']}</li>
+        <li class="bubble-min"> < ${data['bubble_min']}</li>`:``);
+      return template;
+    }
+
+    let showColorsValue = _=> {
+      let template = (_?`<li class="gradient">
+            <div class="color-max"> < ${data['color_max']}</div>
+            <div class="color-min"> < ${data['color_min']}</div>
+        </li>`:``);
+      return template;
+    }
+
+    let template = `<ul class="operate">
+        ${renameBubble(data['rename_bubble_metric'])}
+        ${showBubble(data['show_bubbles'])}
+        ${renameColor(data['rename_color_metric'])}
+        ${showColorsValue(data['show_colors'])}
+    </ul>`;
+
+    return template;
+}
+
+let strings = renderOperator();
+console.log(strings);
+
+
 $(document).ready(function (){
     /*
      * 配置Raphael生成svg的属性
@@ -24,66 +81,68 @@ $(document).ready(function (){
     };
 
     var setColor = function(china) {
-      n01='#85c014';
-      n02='#00a0de';
-      n03='#3471b0';
-      n04='#0896c1';
-      n05='#85bbd6';
-      n06='#72c4ba';
-      n07='#0089d1';
-      n08='#3f557d';
-      n09='#076c93';
-      n10='#b5d5e5';
-      n11='#0070a8';      
+        var n01 = '#85c014',
+            n02 = '#00a0de',
+            n03 = '#3471b0',
+            n04 = '#0896c1',
+            n05 = '#85bbd6',
+            n06 = '#72c4ba',
+            n07 = '#0089d1',
+            n08 = '#3f557d',
+            n09 = '#076c93',
+            n10 = '#b5d5e5',
+            n11 = '#0070a8';
 
-      china['xinjiang']['path'].color = n01;
-      china['xizang']['path'].color = n01;
-      china['neimenggu']['path'].color = n01;
-      china['henan']['path'].color = n01;
-      china['jiangxi']['path'].color = n01;
-      china['guangxi']['path'].color = n01;
+        china['xinjiang']['path'].color = n01;
+        china['xizang']['path'].color = n01;
+        china['neimenggu']['path'].color = n01;
+        china['henan']['path'].color = n01;
+        china['jiangxi']['path'].color = n01;
+        china['guangxi']['path'].color = n01;
 
-      china['jilin']['path'].color = n02;
-      china['ningxia']['path'].color = n02;
-      china['hubei']['path'].color = n02;
-      china['yunnan']['path'].color = n02;
-      china['hainan']['path'].color = n02;
+        china['jilin']['path'].color = n02;
+        china['ningxia']['path'].color = n02;
+        china['hubei']['path'].color = n02;
+        china['yunnan']['path'].color = n02;
+        china['hainan']['path'].color = n02;
 
-      china['hebei']['path'].color = n03;
+        china['hebei']['path'].color = n03;
 
-      china['shanxi']['path'].color = n04;
-      china['sichuan']['path'].color = n04;
-      china['zhejiang']['path'].color = n04;
-      china['aomen']['path'].color = n04;
+        china['shanxi']['path'].color = n04;
+        china['sichuan']['path'].color = n04;
+        china['zhejiang']['path'].color = n04;
+        china['aomen']['path'].color = n04;
 
-      china['qinghai']['path'].color = n05;
+        china['qinghai']['path'].color = n05;
 
-      china['heilongjiang']['path'].color = n06;
-      china['hongkong']['path'].color = n06;
-      china['shanghai']['path'].color = n06;
-      china['gansu']['path'].color = n06;
-      china['taiwan']['path'].color = n06;
-      china['jiangsu']['path'].color = n06;
-      china['tianjin']['path'].color = n06;
+        china['heilongjiang']['path'].color = n06;
+        china['hongkong']['path'].color = n06;
+        china['shanghai']['path'].color = n06;
+        china['gansu']['path'].color = n06;
+        china['taiwan']['path'].color = n06;
+        china['jiangsu']['path'].color = n06;
+        china['tianjin']['path'].color = n06;
 
-      china['liaoning']['path'].color = n07;
-      china['shaanxi']['path'].color = n07;
-      china['guizhou']['path'].color = n07;
+        china['liaoning']['path'].color = n07;
+        china['shaanxi']['path'].color = n07;
+        china['guizhou']['path'].color = n07;
 
-      china['shandong']['path'].color = n08;
-      china['guangdong']['path'].color = n08;
+        china['shandong']['path'].color = n08;
+        china['guangdong']['path'].color = n08;
 
-      china['anhui']['path'].color = n09;
-      china['chongqing']['path'].color = n09;
+        china['anhui']['path'].color = n09;
+        china['chongqing']['path'].color = n09;
 
-      china['xizang']['path'].color = n10;
+        china['xizang']['path'].color = n10;
 
-      china['hunan']['path'].color = n11;
-      china['fujian']['path'].color = n11;
-      china['beijing']['path'].color = n11;
+        china['hunan']['path'].color = n11;
+        china['fujian']['path'].color = n11;
+        china['beijing']['path'].color = n11;
 
-      return china;
+
+        return china;
     };
+
 
     var china = {};
     china.aomen =
@@ -270,16 +329,21 @@ $(document).ready(function (){
     var bbox;
     var circle;
 
+    $('#ChinaMap').after(strings);
+
     for (var state in china){
 
     	bbox = china[state].path.getBBox();
     	// console.log('state:', china[state].path.getBBox());
-    	circle = china[state].path.paper.circle(bbox.x+bbox.width/2, bbox.y+bbox.height/2, 20);
+    	circle = china[state].path.paper.circle(bbox.x+bbox.width/2, bbox.y+bbox.height/2, Math.random()*25);
+
+      circle.attr({
+          "fill": "#ffd733",
+          "stroke": "rgba(154, 164, 113, .3)",
+          "stroke-width": 15
+      });
 
     	state && (circle.node.id = state);
-    	circle.animate('bounce');
-
-    	console.log( 'state:', state );
 
     	china[state]['path'].color = Raphael.getColor(0.9);//set fill color here
       china = setColor(china);
@@ -288,7 +352,6 @@ $(document).ready(function (){
     		$(st[0]).css('cursor','pointer'); 
 	    	//write tip 
 	    	$(st[0]).hover(function(e){
-          console.log('state', state);
           //recover previous element hovered on
           current && china[current]['path'].animate({fill: "#f5f5f5", stroke: "#ddd"}, 500);
 
