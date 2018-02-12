@@ -59,14 +59,8 @@ d3.csv('./mock/data.csv', function(d, i, columns) {
 }, function(error, data) {
   if (error) throw error;
 
-
-
-
-
   radius.domain([0, d3.max(data, function(d) { return d.sum; })]);
-
   color.domain(data.columns.slice(1));
-
   var legend = d3.select('body').append('svg')
       .attr('class', 'legend')
       .attr('width', 120)
