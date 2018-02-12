@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>BFC IFC</title>
+  <link rel="stylesheet" type="text/css" href="./style/normalize.css" />
+  <style type="text/css">
+  html{ }
+  .box{
+    overflow: auto;
+    /*display: block;*/
+    border-bottom: 3px green dotted;
+    margin-bottom: 10px
+  }
+  .wrapper{
+    margin-top: 20px;
+    overflow: auto;
+  }
+  .box div, .wrapper div{
+    float: left;
+    display: inline-block;
+    width: 33%;
+    background: red;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div>float 1</div>
+    <div>float 2</div>
+    <div>float 3</div>
+  </div>
+
+  <div class="wrapper">
+    <div>float 4</div>
+    <div>float 5</div>
+    <div>float 6</div>
+  </div>
+</body>
+</html>

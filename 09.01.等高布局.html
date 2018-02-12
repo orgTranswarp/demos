@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>等高布局</title>
+  <link rel="stylesheet" type="text/css" href="./style/normalize.css" />
+  <style type="text/css">
+  html{ }
+  .table{
+    width: 100%;
+    display: table;
+  }
+  .accordant {
+    display: table-row;
+  }
+  .box{
+    display: table-cell;
+    width: 30vw;
+    height: 30vw;
+    background:red;
+    vertical-align: middle;
+    text-align: center;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="table">
+    <div class="accordant">
+      <div class="box">
+        <p>这是一个figure-01</p>
+      </div>
+      <div class="box">
+        <p>这是一个figure-02</p>
+      </div>
+      <div class="box">
+        <p>这是一个figure-03</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Hybrid</title>
+  <link rel="stylesheet" type="text/css" href="./style/normalize.css" />
+  <style type="text/css">
+	html{ }
+	.ellipsis {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.ellipsis-2l {
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;    /* 数值代表显示几行 */
+		-webkit-box-orient: vertical;
+	}
+
+
+
+.box {
+width: 200px;
+heigth: 100px;
+box-sizing: border-box;
+border: 1px solid #aaa;
+}
+
+/* 去掉元素原有的边框 */
+.retina-border {
+position: relative;
+border: none;
+}
+
+/* 通过设置伪元素放大到2倍的宽高，设置1px边框，再缩小1倍，以达到0.5px边框的效果*/
+.retina-border:after {
+content: '';
+display: block;
+width: 200%;
+height: 200%;
+position: absolute;
+left: 0;
+top: 0;
+box-sizing: border-box;
+border: 0px solid #aaa;
+-webkit-transform-origin: left top;
+transform-origin: left top;
+-webkit-transform: scale(.5);
+transform: scale(.5);
+}
+
+.rt-bd-all:after {
+border-width: 1px;
+}
+
+/* 如果只是想设置一条边框，可以这样改一下，以此类推 */
+.tr-bd-b:after {
+border-bottom-width: 1px;
+}
+
+.tr-bd-t:after {
+border-top-width: 1px;
+}
+
+.tr-bd-l:after {
+border-left-width: 1px;
+}
+
+.tr-bd-r:after {
+  border-right-width: 1px;
+}
+  </style>
+</head>
+
+<body>
+	<h3>1.单行省略号</h3>
+	<div class="ellipsis">
+		这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,
+	</div>
+	<h3>2.多行省略号</h3>
+	<div class="ellipsis-2l">
+		这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,这里是多行省略,
+	</div>
+	<h3>3.retina屏幕实现真正的1px边框</h3>
+	<div class="box retina-border rt-bd-all">retina屏幕实现真正的1px边框</div>
+</body>
+</html>
